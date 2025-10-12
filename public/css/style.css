@@ -1,0 +1,136 @@
+body {
+  background-color: rgb(66, 66, 212);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+
+.f-info {
+  display: flex;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #f0f0f0;
+  height: 6rem;
+  padding: 0.5rem 0;
+}
+
+.fa-compass {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-brand,
+.f-info-socials,
+.f-info-links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+}
+
+.f-info-socials i {
+  margin-right: 1rem;
+  font-size: 1.3rem;
+}
+
+.listing-card {
+  border: none !important;
+  margin-bottom: 2vw;
+  transition: transform 0.2s ease;
+}
+
+.card-text.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.listing-card:hover {
+  transform: scale(1.03);
+}
+
+.card-img-top {
+  border-radius: 0.8vw !important;
+  object-fit: cover !important;
+  width: 100% !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card-img-overlay {
+  background-color: white;
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  background-color: white;
+  opacity: 0.2;
+}
+
+.add-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+}
+
+.edit-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+}
+
+/* Show Page */
+.show-img {
+  height: 30vh;
+}
+
+.btns {
+  display: flex;
+}
+
+/* Map */
+#map {
+  height: 30vw;
+  width: 60vw;
+}
+
+.map-icon {
+  font-size: 24px;
+  color: red;
+  background-color: white;
+  border-radius: 50%; /* optional for nice circular bg */
+  padding: 2px;
+}
+
+.map-icon:hover::before {
+  content: "\f015"; /* Home icon */;
+}
+
