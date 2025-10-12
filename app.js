@@ -20,7 +20,6 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
-
 const dbUrl = process.env.ATLASDB_URL;
 
 app.set("view engine", "ejs");
@@ -35,23 +34,23 @@ main()
   .catch((err) => console.log("Database connection error", err));
 
 async function main() {
-  await mongoose.connect(dbUrl );
+  await mongoose.connect(dbUrl);
 }
 
 const store = Mongostore.create({
   mongoUrl: dbUrl,
   crypto: {
-    secret: process.env.SECRET ,
+    secret: process.env.SECRET,
   },
   touchAfter: 24 * 3600,
 });
 
-store.on("error", ()=> {
+store.on("error", () => {
   console.log("ERROR IN MONGO SESSION STORE", err);
-})
+});
 
 const sessionOptions = {
-  store, 
+  store,
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
@@ -72,7 +71,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 app.use((req, res, next) => {
   res.locals.successMsg = req.flash("success");
   res.locals.errorMsg = req.flash("error");
@@ -80,7 +78,9 @@ app.use((req, res, next) => {
   next();
 });
 
-
+app.use("/", (req, res) => {
+  res.render("listings/index.ejs");
+});
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
