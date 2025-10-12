@@ -80,10 +80,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", async(req, res) => {
-  let allListings = await Listing.find();
-  res.render("listings/index.ejs", { allListings });
+app.get("/", async (req, res, next) => {
+  try {
+    const allListings = await Listing.find();
+    res.render("listings/index.ejs", { allListings });
+  } catch (err) {
+    console.error("Error fetching listings for /:", err);
+    next(err);
+  }
 });
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
