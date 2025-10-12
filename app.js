@@ -79,7 +79,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", async(req, res) => {
+app.get("/", async(req, res) => {
   let allListings = await Listing.find();
   res.render("listings/index.ejs", { allListings });
 });
